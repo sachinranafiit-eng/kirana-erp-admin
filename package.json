@@ -1,0 +1,1 @@
+{"name":"kirana-erp","version":"2.0.0","private":true,"scripts":{"setup":"npm --prefix backend ci && npm --prefix frontend ci && npm --prefix frontend run build","start":"node backend/scripts/launch.js","test":"npm --prefix backend test","build":"npm --prefix frontend run build"},"engines":{"node":">=18"}}
