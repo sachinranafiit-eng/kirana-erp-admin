@@ -1,0 +1,41 @@
+{
+  "name": "kirana-erp-backend",
+  "version": "2.0.0",
+  "description": "Complete Kirana ERP + POS backend API with inventory, purchasing, GST, reports, imports, communications, and online store",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "migrate": "node -e \"require('./src/config/db').runSqlFile('../../../database/schema.sql')\"",
+    "seed": "node -e \"require('./src/config/db').runSqlFile('../../../database/seed.sql')\"",
+    "migrate:comm": "node -e \"require('./src/config/db').runSqlFile('../../../database/002_communications_and_store_schema.sql')\"",
+    "seed:comm": "node -e \"require('./src/config/db').runSqlFile('../../../database/002_communications_and_store_seed.sql')\"",
+    "seed:admin": "node scripts/seedAdmin.js",
+    "test": "node --test test/*.test.js",
+    "migrate:all": "node scripts/migrate.js"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "csv-parse": "^7.0.2",
+    "decimal.js": "^10.6.0",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "express-validator": "^7.1.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^2.4.0",
+    "pdfjs-dist": "^6.3.289",
+    "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
