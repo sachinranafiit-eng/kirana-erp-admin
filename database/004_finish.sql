@@ -1,0 +1,11 @@
+ALTER TABLE sales_returns ADD COLUMN tax_components JSONB NOT NULL DEFAULT '{}';
+ALTER TABLE purchase_returns ADD COLUMN tax_components JSONB NOT NULL DEFAULT '{}';
+ALTER TABLE online_orders ADD COLUMN sale_id INT REFERENCES sales(id);
+ALTER TABLE online_orders ADD COLUMN idempotency_key TEXT UNIQUE;
+ALTER TABLE online_order_items ADD COLUMN batch_id INT REFERENCES product_batches(id);
+ALTER TABLE online_order_items ADD COLUMN snapshot JSONB;
+ALTER TABLE online_order_items ADD COLUMN cost_price_snapshot NUMERIC(12,2) NOT NULL DEFAULT 0;
+ALTER TABLE online_order_items ADD COLUMN tax_components JSONB NOT NULL DEFAULT '{}';
+ALTER TABLE online_orders ADD COLUMN store_snapshot JSONB;
+ALTER TABLE online_orders ADD COLUMN customer_snapshot JSONB;
+UPDATE settings SET value='false' WHERE key='online_store_enabled';
